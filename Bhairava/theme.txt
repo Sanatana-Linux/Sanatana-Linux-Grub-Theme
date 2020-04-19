@@ -1,0 +1,43 @@
+# GRUB2 gfxmenu
+
+# Global Property
+title-text: "Lord Bhairava Grub2 Theme"
+desktop-color: "#17161B"
+terminal-font: "VCR OSD Mono Bold 32"
+terminal-box: "terminal_box_*.png"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+terminal-border: "0"
+
+# Show the boot menu
++ boot_menu {
+  left = 12%
+  right=12%
+  top = 10%
+  bottom=10%
+  width = 88%
+  height = 88%
+  item_font = "VCR OSD Mono Bold 32" 
+  item_color = "#e9e9ff"
+  selected_item_color = "#8265FF"
+  icon_width = 72
+  icon_height = 72
+  item_height = 72
+  item_spacing = 36
+  selected_item_pixmap_style = "select_*.png"
+}
+
+# Show a countdown message using the label component
++ label {
+  top = 82%
+  left = 33%
+  right=33%
+  width = 33%
+  align = "center"
+  id = "__timeout__"
+  text = "Booting in %d seconds"
+  color = "#cccccc"
+  font = " VCR OSD Mono Bold 32"
+}

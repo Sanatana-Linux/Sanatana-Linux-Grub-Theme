@@ -7,7 +7,7 @@ Minimalist grub theme inspired by Matter, which in turn was inspired by Google's
 ```bash
 git clone https://github.com/Thomashighbaugh/Bhairava-Grub-Theme
 
-cd Bhairava Grub Theme
+cd Bhairava-Grub-Theme
 
 sudo chmod +x svg2png.sh
 ./svg2png.sh

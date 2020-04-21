@@ -9,7 +9,7 @@ terminal-left: "0"
 terminal-top: "0"
 terminal-width: "100%"
 terminal-height: "100%"
-terminal-border: "0"
+terminal-border: "2px"
 
 # Show the boot menu
 + boot_menu {
@@ -17,15 +17,15 @@ terminal-border: "0"
   right=12%
   top = 10%
   bottom=10%
-  width = 88%
-  height = 88%
+  width = 76%
+  height = 76%
   item_font = "VCR OSD Mono Bold 32" 
   item_color = "#e9e9ff"
   selected_item_color = "#8265FF"
-  icon_width = 72
-  icon_height = 72
-  item_height = 72
-  item_spacing = 36
+  icon_width = 86
+  icon_height = 86
+  item_height = 86
+  item_spacing = 48
   selected_item_pixmap_style = "select_*.png"
 }
 

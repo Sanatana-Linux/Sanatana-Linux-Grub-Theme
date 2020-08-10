@@ -2,14 +2,14 @@
 
 # Global Property
 title-text: "Lord Bhairava Grub2 Theme"
-desktop-color: "#17161B"
+desktop-color: "#cccccc"
 terminal-font: "VCR OSD Mono Bold 32"
 terminal-box: "terminal_box_*.png"
 terminal-left: "0"
 terminal-top: "0"
 terminal-width: "100%"
 terminal-height: "100%"
-terminal-border: "2px"
+terminal-border: "5px"
 
 # Show the boot menu
 + boot_menu {

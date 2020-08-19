@@ -12,7 +12,7 @@ readonly COLORS=(
   [PINK]="#e53935"
   [PURPLE]="#8265FF"
   [DEEP_PURPLE]="#673AB7"
-  [BLUE]="#3949ab"
+  [BLUE]="#00CAFF"
   [CYAN]="#039be5"
   [TEAL]="#1e88e5"
   [GREEN]="#00897b"
@@ -23,7 +23,7 @@ readonly COLORS=(
 )
 
 # Default highlight color
-PALETTE="PURPLE"
+PALETTE="BLUE"
 
 # Parsing parameters
 while [[ $# -gt 0 ]]; do

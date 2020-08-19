@@ -2,8 +2,8 @@
 
 # Global Property
 title-text: "Lord Bhairava Grub2 Theme"
-desktop-color: "#cccccc"
-terminal-font: "VCR OSD Mono Bold 32"
+desktop-color: "#292d35"
+terminal-font: "Inter Bold 32"
 terminal-box: "terminal_box_*.png"
 terminal-left: "0"
 terminal-top: "0"
@@ -13,19 +13,19 @@ terminal-border: "5px"
 
 # Show the boot menu
 + boot_menu {
-  left = 12%
-  right=12%
+  left = 25%
+  right=25%
   top = 10%
   bottom=10%
-  width = 76%
-  height = 76%
-  item_font = "VCR OSD Mono Bold 32" 
-  item_color = "#e9e9ff"
-  selected_item_color = "#8265FF"
-  icon_width = 86
-  icon_height = 86
-  item_height = 86
-  item_spacing = 48
+  width = 50%
+  height = 75%
+  item_font = "Inter Bold 32" 
+  item_color = "#edeeff"
+  selected_item_color = "#00CAFF"
+  icon_width = 128
+  icon_height = 128
+  item_height = 128
+  item_spacing = 72
   selected_item_pixmap_style = "select_*.png"
 }
 
@@ -38,6 +38,6 @@ terminal-border: "5px"
   align = "center"
   id = "__timeout__"
   text = "Booting in %d seconds"
-  color = "#cccccc"
-  font = " VCR OSD Mono Bold 32"
+  color = "#edeeff"
+  font = "Inter Bold 32"
 }

@@ -141,8 +141,8 @@ fi
 
 # Copy theme
 echo "Installing ${THEME_NAME} theme..."
-[[ -d /boot/grub ]] && cp -a ${WORKING_DIR}/${THEME_NAME} ${TARGET_DIR}
-[[ -d /boot/grub2 ]] && cp -a ${WORKING_DIR}/${THEME_NAME} ${TARGET_DIR_2}
+[[ -d /boot/grub ]] && cp -rvfa ${WORKING_DIR}/${THEME_NAME} ${TARGET_DIR}
+[[ -d /boot/grub2 ]] && cp -rvfa ${WORKING_DIR}/${THEME_NAME} ${TARGET_DIR_2}
 
 # Set theme
 echo -e "Setting ${THEME_NAME} as default..."

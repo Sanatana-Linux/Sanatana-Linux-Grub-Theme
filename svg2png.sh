@@ -3,18 +3,7 @@
 DIR=$(dirname $(realpath $0))
 SVG_PATH="${DIR}/svg-icons"
 PNG_PATH="${DIR}/Bhairava/icons"
-CONVERT="convert \
-    -trim \
-    -scale 36x36 \
-    -extent 72x72 \
-    -gravity center \
-    -define png:color-type=6 \
-    -background none \
-    -colorspace sRGB \
-    -channel RGB \
-    -threshold -1 \
-    -density 300"
-
+CONVERT="convert -trim -scale 36x36 -extent 72x72 -gravity center -define png:color-type=6 -background none -colorspace sRGB -channel RGB -threshold -1 -density 300"
 while [ "$1" != "" ]; do
     case $1 in
     -h | --help)
@@ -34,11 +23,6 @@ while [ "$1" != "" ]; do
     shift
 done
 
-if $(command -v convert) >/dev/null; then
-    echo "Error: convert not found"
-    echo "Install imagemagick to continue"
-    exit 1
-fi
 
 echo "Starting conversion ..."
 

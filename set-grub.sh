@@ -6,24 +6,9 @@ THEME_NAME="Bhairava"
 WORKING_DIR=`dirname "$(readlink -f "$0")"`
 RESOLUTION="1920x1080"
 
-declare -A COLORS
-readonly COLORS=(
-  [RED]="#fa75a2"
-  [PINK]="#e53935"
-  [PURPLE]="#8265FF"
-  [DEEP_PURPLE]="#673AB7"
-  [BLUE]="#00CAFF"
-  [CYAN]="#039be5"
-  [TEAL]="#1e88e5"
-  [GREEN]="#00897b"
-  [YELLOW]="#fdd835"
-  [ORANGE]="#FF9800"
-  [GRAY]="#e5e5e9"
-  [WHITE]="#e9e9ff"
-)
 
 # Default highlight color
-PALETTE="BLUE"
+PALETTE="#8b9cbe"
 
 # Parsing parameters
 while [[ $# -gt 0 ]]; do
@@ -54,13 +39,13 @@ while [[ $# -gt 0 ]]; do
     exit 0
     ;;
   *) # unknown option
-    POSITIONAL+=("$1") # save it in an array for later
+  
     shift # past argument
     ;;
   esac
 done
 echo $POSITIONAL
-set -- "${POSITIONAL[@]}" # restore positional parameters
+
 
 # Checking for root access
 if [ "$EUID" -ne 0 ]; then

@@ -14,8 +14,8 @@ THEME_DIR="/usr/share/grub/themes"
 REO_DIR="$(cd $(dirname $0) && pwd)"
 }
 
-THEME_VARIANTS=('one' 'two' 'three' 'four' 'five')
-ICON_VARIANTS=('color' 'white' 'five')
+THEME_VARIANTS=('bhairava')
+ICON_VARIANTS=('color' 'white' 'whitesur')
 SCREEN_VARIANTS=('1080p' '2k' '4k' 'ultrawide' 'ultrawide2k')
 
 #COLORS
@@ -56,8 +56,8 @@ usage() {
   printf "%s\n" "Usage: ${0##*/} [OPTIONS...]"
   printf "\n%s\n" "OPTIONS:"
   printf "  %-25s%s\n" "-b, --boot" "install grub theme into /boot/grub/themes"
-  printf "  %-25s%s\n" "-t, --theme" "theme variant(s) [one|two|three|four|five] (default is one)"
-  printf "  %-25s%s\n" "-i, --icon" "icon variant(s) [color|white|five] (default is color)"
+  printf "  %-25s%s\n" "-t, --theme" "theme variant(s) [bhairava] (default is bhairava)"
+  printf "  %-25s%s\n" "-i, --icon" "icon variant(s) [color|white|whitesur] (default is color)"
   printf "  %-25s%s\n" "-s, --screen" "screen display variant(s) [1080p|2k|4k|ultrawide|ultrawide2k] (default is 1080p)"
   printf "  %-25s%s\n" "-r, --remove" "Remove theme (must add theme name option)"
   printf "  %-25s%s\n" "-h, --help" "Show this help"
@@ -68,11 +68,11 @@ install() {
   local icon=${2}
   local screen=${3}
 
-  if [[ ${screen} == 'ultrawide' && ( ${theme} == 'four' || ${theme} == 'five' ) ]]; then
-    prompt -e "ultrawide 1080p does not support four and five theme"
+  if [[ ${screen} == 'ultrawide' && ( ${theme} == 'slaze' || ${theme} == 'whitesur' ) ]]; then
+    prompt -e "ultrawide 1080p does not support Slaze and WhiteSur theme"
     exit 1
-  elif [[ ${screen} == 'ultrawide2k' && ( ${theme} == 'four' || ${theme} == 'five' ) ]]; then
-    prompt -e "ultrawide 1440p does not support four and five theme"
+  elif [[ ${screen} == 'ultrawide2k' && ( ${theme} == 'slaze' || ${theme} == 'whitesur' ) ]]; then
+    prompt -e "ultrawide 1440p does not support Slaze and WhiteSur theme"
     exit 1
   fi
 
@@ -92,13 +92,13 @@ install() {
     # Don't preserve ownership because the owner will be root, and that causes the script to crash if it is ran from terminal by sudo
     cp -a --no-preserve=ownership "${REO_DIR}/common/"{*.png,*.pf2} "${THEME_DIR}/${theme}"
     cp -a --no-preserve=ownership "${REO_DIR}/config/theme-${screen}.txt" "${THEME_DIR}/${theme}/theme.txt"
-    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/background-${theme}.jpg" "${THEME_DIR}/${theme}/background.jpg"
+    cp -a --no-preserve=ownership "${REO_DIR}/backgrounds/${screen}/background.png" "${THEME_DIR}/${theme}/background.png"
 
     # Use custom background.jpg as grub background image
-    if [[ -f "${REO_DIR}/background.jpg" ]]; then
-      prompt -w "\n Using custom background.jpg as grub background image..."
-      cp -a --no-preserve=ownership "${REO_DIR}/background.jpg" "${THEME_DIR}/${theme}/background.jpg"
-      convert -auto-orient "${THEME_DIR}/${theme}/background.jpg" "${THEME_DIR}/${theme}/background.jpg"
+    if [[ -f "${REO_DIR}/background.png" ]]; then
+      prompt -w "\n Using custom background.png as grub background image..."
+      cp -a --no-preserve=ownership "${REO_DIR}/background.png" "${THEME_DIR}/${theme}/background.png"
+      convert -auto-orient "${THEME_DIR}/${theme}/background.png" "${THEME_DIR}/${theme}/background.png"
     fi
 
     if [[ ${screen} == 'ultrawide' ]]; then
@@ -124,22 +124,12 @@ install() {
     # Fedora workaround to fix the missing unicode.pf2 file (tested on fedora 34): https://bugzilla.redhat.com/show_bug.cgi?id=1739762
     # This occurs when we add a theme on grub2 with Fedora.
     if has_command dnf; then
-      if [[ -f "/boot/grub2/fonts/unicode.pf2" ]]; then
-        if grep "GRUB_FONT=" /etc/default/grub 2>&1 >/dev/null; then
-          #Replace GRUB_FONT
-          sed -i "s|.*GRUB_FONT=.*|GRUB_FONT=/boot/grub2/fonts/unicode.pf2|" /etc/default/grub
-        else
-          #Append GRUB_FONT
-          echo "GRUB_FONT=/boot/grub2/fonts/unicode.pf2" >> /etc/default/grub
-        fi
-      elif [[ -f "/boot/efi/EFI/fedora/fonts/unicode.pf2" ]]; then
-        if grep "GRUB_FONT=" /etc/default/grub 2>&1 >/dev/null; then
-          #Replace GRUB_FONT
-          sed -i "s|.*GRUB_FONT=.*|GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2|" /etc/default/grub
-        else
-          #Append GRUB_FONT
-          echo "GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2" >> /etc/default/grub
-        fi
+      if grep "GRUB_FONT=" /etc/default/grub 2>&1 >/dev/null; then
+        #Replace GRUB_FONT
+        sed -i "s|.*GRUB_FONT=.*|GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2|" /etc/default/grub
+      else
+        #Append GRUB_FONT
+        echo "GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2" >> /etc/default/grub
       fi
     fi
 
@@ -262,17 +252,9 @@ run_dialog() {
 
     tui=$(dialog --backtitle ${Project_Name} \
     --radiolist "Choose your Grub theme : " 15 40 5 \
-      1 "two Theme" off  \
-      2 "one Theme" on \
-      3 "three Theme" off  \
-      4 "four Theme" off  \
-      5 "five Theme" off --output-fd 1 )
+      1 "bhairava Theme" off --output-fd 1 )
       case "$tui" in
-        1) theme="two"      ;;
-        2) theme="one"       ;;
-        3) theme="three"    ;;
-        4) theme="four"      ;;
-        5) theme="five"   ;;
+        1) theme="bhairava"    ;;
         *) operation_canceled ;;
      esac
 
@@ -280,11 +262,11 @@ run_dialog() {
     --radiolist "Choose icon style : " 15 40 5 \
       1 "white" off \
       2 "color" on \
-      3 "five" off --output-fd 1 )
+      3 "whitesur" off --output-fd 1 )
       case "$tui" in
         1) icon="white"       ;;
         2) icon="color"       ;;
-        3) icon="five"    ;;
+        3) icon="whitesur"    ;;
         *) operation_canceled ;;
      esac
 
@@ -320,13 +302,7 @@ updating_grub() {
   elif has_command zypper; then
     grub2-mkconfig -o /boot/grub2/grub.cfg
   elif has_command dnf; then
-    if [[ -f /boot/efi/EFI/fedora/grub.cfg ]]; then
-      prompt -i "Find config file on /boot/efi/EFI/fedora/grub.cfg ...\n"
-      grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
-    elif [[ -f /boot/grub2/grub.cfg ]]; then
-      prompt -i "Find config file on /boot/grub2/grub.cfg ...\n"
-      grub2-mkconfig -o /boot/grub2/grub.cfg
-    fi
+    grub2-mkconfig -o /boot/grub2/grub.cfg || grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
   fi
 
   # Success message
@@ -458,24 +434,8 @@ while [[ $# -gt 0 ]]; do
       shift
       for theme in "${@}"; do
         case "${theme}" in
-          one)
+          bhairava)
             themes+=("${THEME_VARIANTS[0]}")
-            shift
-            ;;
-          two)
-            themes+=("${THEME_VARIANTS[1]}")
-            shift
-            ;;
-          three)
-            themes+=("${THEME_VARIANTS[2]}")
-            shift
-            ;;
-          four)
-            themes+=("${THEME_VARIANTS[3]}")
-            shift
-            ;;
-          five)
-            themes+=("${THEME_VARIANTS[4]}")
             shift
             ;;
           -*|--*)
@@ -501,7 +461,7 @@ while [[ $# -gt 0 ]]; do
             icons+=("${ICON_VARIANTS[1]}")
             shift
             ;;
-          five)
+          whitesur)
             icons+=("${ICON_VARIANTS[2]}")
             shift
             ;;

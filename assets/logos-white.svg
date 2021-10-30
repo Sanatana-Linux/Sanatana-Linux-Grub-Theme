@@ -540,11 +540,11 @@
       <path
          transform="matrix(.24804 0 0 .24804 -11.443 -27.333)"
          d="m77.779 130.34a14.392 14.385 0 0 1-2e-3 6e-3c0.0011-1e-3 0.0028-2e-3 0.0039-4e-3zm-2e-3 6e-3c-2.1813 2.9331-6.2024 4.5021-10.992 5.1992-5.0025 0.72565-10.801 0.50939-15.973 0.0684 0.24628 0.36923 0.5192 0.73001 0.79883 1.0762 0.04798 4e-3 0.09651 0.0116 0.14453 0.0156 5.0387 0.38213 10.152 0.55053 15.174-0.1582 3.6109-0.55485 7.1392-1.8356 10.137-3.9434 0.02208-0.0194 0.04845-0.0393 0.07031-0.0586a14.392 14.385 0 0 0 0.64062-2.1992z"
-         color="#17191e"
+         color="#000000"
          fill-rule="evenodd"
-         solid-color="#17191e"
+         solid-color="#000000"
          stroke-width="6.8045"
-         style="isolation:auto;mix-blend-mode:normal;text-decoration-color:#17191e;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal;fill:#ffffff"
+         style="isolation:auto;mix-blend-mode:normal;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-transform:none;white-space:normal;fill:#ffffff"
          id="path190" />
       <path
          transform="matrix(.63633 0 0 .63602 10.606 -179.78)"
@@ -1224,13 +1224,13 @@
        id="circle409" />
     <path
        d="m154.86 167.3a0.38 0.38 0 0 0-0.24 0.11 0.55 0.55 0 0 0-0.13 0.25c0 0.03-0.05 0.08-0.14 0.14l-0.35 0.17c-0.13 0.06-0.26 0.11-0.37 0.22a0.42 0.42 0 0 0-0.11 0.22c-0.02 0.1 0 0.2 0.04 0.27a0.5 0.5 0 0 0 0.36 0.28c0.14 0.01 0.24-0.01 0.32-0.02l0.07-0.13h-0.08c-0.1 0-0.19 0.03-0.29 0.02a0.34 0.34 0 0 1-0.26-0.2 0.3 0.3 0 0 1-0.03-0.2 0.3 0.3 0 0 1 0.08-0.15c0.08-0.08 0.2-0.14 0.33-0.2 0.12-0.05 0.26-0.1 0.36-0.17s0.17-0.14 0.2-0.22a0.42 0.42 0 0 1 0.09-0.19c0.04-0.05 0.1-0.07 0.16-0.08 0.12 0 0.24 0.06 0.34 0.15 0.07 0.06 0.12 0.12 0.18 0.2l0.12-0.06a1.52 1.52 0 0 0-0.21-0.24c-0.12-0.1-0.26-0.19-0.44-0.17zm0.02 0.25a0.11 0.11 0 0 0-0.08 0.04 0.3 0.3 0 0 0-0.06 0.14c-0.03 0.12-0.13 0.22-0.25 0.29s-0.26 0.13-0.38 0.18c-0.12 0.06-0.23 0.12-0.29 0.18a0.16 0.16 0 0 0-0.05 0.08c0 0.03 0 0.06 0.03 0.1 0.05 0.1 0.1 0.13 0.16 0.14l0.25-0.02a0.7 0.7 0 0 1 0.18 0l0.08-0.12a0.78 0.78 0 0 0-0.27 0l-0.22 0.01c-0.04 0-0.03 0.01-0.07-0.06v-0.05l0.25-0.14c0.12-0.05 0.27-0.11 0.4-0.2 0.13-0.07 0.26-0.18 0.3-0.36a0.17 0.17 0 0 1 0.04-0.07s0.07 0.01 0.14 0.08l0.12 0.13 0.11-0.07-0.14-0.16c-0.1-0.08-0.19-0.12-0.25-0.12zm3.13-0.15a0.94 0.94 0 0 0-0.6 0.28l0.13 0.06a0.8 0.8 0 0 1 0.47-0.2 0.6 0.6 0 0 1 0.38 0.09c0.21 0.13 0.24 0.28 0.26 0.38 0.02 0.05 0.03 0.1 0.08 0.15 0.04 0.06 0.12 0.12 0.25 0.2 0.08 0.03 0.13 0.07 0.17 0.12a0.2 0.2 0 0 1 0.03 0.17c-0.02 0.1-0.12 0.18-0.23 0.25l-0.23 0.1 0.05 0.12 0.24-0.1c0.13-0.08 0.26-0.17 0.3-0.34 0.02-0.1 0-0.2-0.06-0.27a0.57 0.57 0 0 0-0.2-0.17 0.72 0.72 0 0 1-0.22-0.16 0.22 0.22 0 0 1-0.05-0.1 0.74 0.74 0 0 0-0.77-0.58zm0.01 0.26c-0.1 0.01-0.2 0.05-0.3 0.1l-0.05 0.05 0.12 0.07a0.54 0.54 0 0 1 0.24-0.09c0.08 0 0.15 0.01 0.22 0.05 0.16 0.1 0.12 0.1 0.15 0.24 0.02 0.07 0.06 0.16 0.13 0.25s0.18 0.17 0.33 0.25l0.04 0.03-0.08 0.06-0.21 0.09 0.06 0.12c0.08-0.03 0.15-0.06 0.21-0.1 0.1-0.05 0.17-0.12 0.18-0.16 0-0.02 0-0.04-0.02-0.06a0.35 0.35 0 0 0-0.12-0.1 0.96 0.96 0 0 1-0.3-0.21 0.5 0.5 0 0 1-0.1-0.2c-0.02-0.12-0.02-0.2-0.2-0.32a0.47 0.47 0 0 0-0.3-0.07zm-3.82 3.23c-0.2 0.12-0.35 0.28-0.45 0.44-0.08 0.14-0.14 0.3-0.06 0.47 0.04 0.08 0.12 0.14 0.2 0.17 0.1 0.03 0.18 0.03 0.28 0.02h0.12l0.01 0.05c0 0.06 0 0.16 0.03 0.28s0.1 0.26 0.24 0.36a0.4 0.4 0 0 0 0.24 0.09c0.1 0 0.18-0.05 0.23-0.1 0.11-0.1 0.16-0.21 0.22-0.33l0.09-0.16a2.33 2.33 0 0 1-0.11-0.07l-0.1 0.17c-0.05 0.12-0.1 0.23-0.19 0.3a0.23 0.23 0 0 1-0.14 0.06 0.26 0.26 0 0 1-0.17-0.06 0.5 0.5 0 0 1-0.18-0.28c-0.03-0.1-0.03-0.2-0.03-0.27 0-0.08-0.02-0.12-0.04-0.14-0.03-0.03-0.1-0.05-0.24-0.03a0.47 0.47 0 0 1-0.21-0.01 0.22 0.22 0 0 1-0.13-0.11c-0.05-0.1-0.02-0.22 0.06-0.35 0.07-0.13 0.21-0.27 0.39-0.38zm0.11 0.24c-0.15 0.1-0.27 0.22-0.33 0.33-0.06 0.1-0.07 0.18-0.05 0.22 0 0.02 0.02 0.04 0.05 0.05h0.15c0.16-0.02 0.27 0 0.34 0.06s0.08 0.15 0.09 0.23c0 0.08 0 0.17 0.02 0.24 0.02 0.08 0.06 0.15 0.14 0.22l0.08 0.03c0.02 0 0.04 0 0.07-0.03a1 1 0 0 0 0.16-0.26l0.1-0.17-0.1-0.07-0.11 0.18c-0.06 0.1-0.1 0.18-0.13 0.2a0.2 0.2 0 0 1-0.08-0.13l-0.02-0.22c0-0.1-0.02-0.22-0.13-0.32-0.12-0.1-0.27-0.1-0.44-0.08h-0.06l0.03-0.08a1 1 0 0 1 0.3-0.29zm4.41-0.16-0.05 0.12c0.1 0.05 0.18 0.11 0.26 0.17 0.12 0.08 0.22 0.16 0.25 0.27 0.01 0.06 0 0.12-0.05 0.17a0.46 0.46 0 0 1-0.2 0.1c-0.15 0.04-0.23 0.1-0.28 0.16a0.47 0.47 0 0 0-0.06 0.22c-0.01 0.08-0.02 0.17-0.05 0.25-0.04 0.08-0.13 0.15-0.26 0.16-0.25 0.04-0.44-0.1-0.56-0.29l-0.07-0.14-0.12 0.06 0.08 0.15c0.14 0.22 0.38 0.4 0.69 0.35 0.16-0.02 0.3-0.11 0.35-0.23 0.06-0.12 0.06-0.22 0.06-0.3 0.01-0.07 0.02-0.12 0.05-0.15 0.03-0.04 0.07-0.08 0.2-0.12 0.1-0.03 0.19-0.06 0.26-0.13s0.1-0.2 0.09-0.29c-0.05-0.18-0.17-0.26-0.3-0.35a4.12 4.12 0 0 0-0.29-0.18zm-0.11 0.23-0.07 0.12 0.24 0.15 0.09 0.07h-0.01a0.73 0.73 0 0 0-0.42 0.27 0.71 0.71 0 0 0-0.11 0.34l-0.03 0.17-0.05 0.02c-0.15 0.02-0.22-0.04-0.31-0.18a0.9 0.9 0 0 1-0.07-0.14l-0.11 0.07 0.07 0.14c0.1 0.17 0.23 0.26 0.43 0.24 0.1-0.02 0.14-0.05 0.16-0.1 0.02-0.04 0.03-0.11 0.04-0.2a0.6 0.6 0 0 1 0.09-0.28 0.6 0.6 0 0 1 0.35-0.22 0.36 0.36 0 0 0 0.14-0.07c0.02-0.02 0.02-0.02 0.01-0.04 0-0.03-0.08-0.12-0.2-0.2z"
-       color="#17191e"
+       color="#000000"
        fill="#ffffff"
        font-family="sans-serif"
        font-weight="400"
        overflow="visible"
-       solid-color="#17191e"
-       style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#17191e;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"
+       solid-color="#000000"
+       style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"
        id="path411" />
     <path
        d="m156.48 167.53a2.47 2.47 0 1 0 0 4.94 2.47 2.47 0 0 0 0-4.94zm0 1.3a1.17 1.17 0 1 1 0 2.34 1.17 1.17 0 0 1 0-2.34z"
@@ -1342,14 +1342,14 @@
          id="path442" />
       <path
          d="m28.148 10.479a0.85 0.85 0 0 0-0.50977 0.20312c-3.2713 2.7966-8.93 5.8008-13.891 7.8242-2.4803 1.0117-4.7939 1.7844-6.5293 2.1836-0.86771 0.19962-1.5957 0.30309-2.082 0.30859-0.22158 0.0025-0.14324 0.02056-0.23047-2e-3 0.30292-0.3967 1.0426-1.1292 2.6113-2.2832a0.85 0.85 0 0 0 0.18164-1.1895 0.85 0.85 0 0 0-1.1875-0.18164c-1.6791 1.2353-2.5627 2.0431-3.0566 2.7188-0.24698 0.33781-0.41394 0.65925-0.44922 1.043-0.034304 0.37316 0.13984 0.75831 0.32812 0.97266 0.48998 0.5839 1.1426 0.62879 1.8223 0.62109 0.69165-0.0078 1.5042-0.1355 2.4434-0.35156 1.8784-0.43212 4.2496-1.229 6.791-2.2656 5.0829-2.0733 10.808-5.0764 14.352-8.1055a0.85 0.85 0 0 0 0.09375-1.1992 0.85 0.85 0 0 0-0.6875-0.29688z"
-         color="#17191e"
+         color="#000000"
          color-rendering="auto"
          dominant-baseline="auto"
          image-rendering="auto"
          shape-rendering="auto"
-         solid-color="#17191e"
-         stop-color="#17191e"
-         style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#17191e;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal;fill:#ffffff"
+         solid-color="#000000"
+         stop-color="#000000"
+         style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;font-variation-settings:normal;inline-size:0;isolation:auto;mix-blend-mode:normal;shape-margin:0;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal;fill:#ffffff"
          id="path444" />
       <circle
          cx="21.7"

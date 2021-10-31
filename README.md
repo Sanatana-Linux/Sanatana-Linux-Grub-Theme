@@ -1,4 +1,6 @@
-# Project Title
+# Bhairava Grub Theme
+
+Part of `the Electric Tantra Linux` 
 
 ## Table of Contents
 + [About](#about)

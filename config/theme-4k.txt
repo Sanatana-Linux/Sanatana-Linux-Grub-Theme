@@ -5,6 +5,7 @@
 title-text: ""
 desktop-image: "background.jpg"
 desktop-color: "#000000"
+message-bg-color: "#17191e"
 terminal-font: "Terminus Regular 18"
 terminal-box: "terminal_box_*.png"
 terminal-left: "0"
@@ -21,7 +22,7 @@ terminal-border: "0"
   height = 40%
   item_font = "DejaVu Sans Regular 32"
   item_color = "#cccccc"
-  selected_item_color = "#ffffff"
+  item_color = "#ffffff"
   icon_width = 64
   icon_height = 64
   item_icon_space = 36

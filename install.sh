@@ -1,47 +1,50 @@
-#! /usr/bin/env bash
+#! /usr/bin/bash
 
 # Grub2 Themes
-set  -o errexit
+#set -o errexit
 
-[  GLOBAL::CONF  ]
-{
+# [ GLOBAL::CONF ]
+
 readonly ROOT_UID=0
 readonly Project_Name="GRUB2::THEMES"
-readonly MAX_DELAY=20                               # max delay for user to enter root password
+readonly MAX_DELAY=20 # max delay for user to enter root password
 tui_root_login=
 
 THEME_DIR="/usr/share/grub/themes"
-REO_DIR="$(cd $(dirname $0) && pwd)"
-}
+REO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-THEME_VARIANTS=('one' 'two' 'three' 'four' 'five')
-ICON_VARIANTS=('color' 'white' 'five')
-SCREEN_VARIANTS=('1080p' '2k' '4k' 'ultrawide' 'ultrawide2k')
+THEME_VARIANTS+=("one" "two" "three" "four" "five")
+ICON_VARIANTS+=("color" "white" "five")
+SCREEN_VARIANTS+=("1080p" "2k" "4k" "ultrawide" "ultrawide2k")
 
 #COLORS
-CDEF=" \033[0m"                                     # default color
-CCIN=" \033[0;36m"                                  # info color
-CGSC=" \033[0;32m"                                  # success color
-CRER=" \033[0;31m"                                  # error color
-CWAR=" \033[0;33m"                                  # waring color
-b_CDEF=" \033[1;37m"                                # bold default color
-b_CCIN=" \033[1;36m"                                # bold info color
-b_CGSC=" \033[1;32m"                                # bold success color
-b_CRER=" \033[1;31m"                                # bold error color
-b_CWAR=" \033[1;33m"                                # bold warning color
+CDEF=" \033[0m"      # default color
+CCIN=" \033[0;36m"   # info color
+CGSC=" \033[0;32m"   # success color
+CRER=" \033[0;31m"   # error color
+CWAR=" \033[0;33m"   # waring color
+b_CDEF=" \033[1;37m" # bold default color
+b_CCIN=" \033[1;36m" # bold info color
+b_CGSC=" \033[1;32m" # bold success color
+b_CRER=" \033[1;31m" # bold error color
+b_CWAR=" \033[1;33m" # bold warning color
 
 # echo like ... with flag type and display message colors
-prompt () {
+prompt() {
   case ${1} in
-    "-s"|"--success")
-      echo -e "${b_CGSC}${@/-s/}${CDEF}";;    # print success message
-    "-e"|"--error")
-      echo -e "${b_CRER}${@/-e/}${CDEF}";;    # print error message
-    "-w"|"--warning")
-      echo -e "${b_CWAR}${@/-w/}${CDEF}";;    # print warning message
-    "-i"|"--info")
-      echo -e "${b_CCIN}${@/-i/}${CDEF}";;    # print info message
-    *)
+  "-s" | "--success")
+    echo -e "${b_CGSC}${@/-s/}${CDEF}"
+    ;; # print success message
+  "-e" | "--error")
+    echo -e "${b_CRER}${@/-e/}${CDEF}"
+    ;; # print error message
+  "-w" | "--warning")
+    echo -e "${b_CWAR}${@/-w/}${CDEF}"
+    ;; # print warning message
+  "-i" | "--info")
+    echo -e "${b_CCIN}${@/-i/}${CDEF}"
+    ;; # print info message
+  *)
     echo -e "$@"
     ;;
   esac
@@ -49,7 +52,7 @@ prompt () {
 
 # Check command availability
 function has_command() {
-  command -v $1 > /dev/null
+  command -v "$1" >/dev/null
 }
 
 usage() {
@@ -68,10 +71,10 @@ install() {
   local icon=${2}
   local screen=${3}
 
-  if [[ ${screen} == 'ultrawide' && ( ${theme} == 'four' || ${theme} == 'five' ) ]]; then
+  if [[ ${screen} == 'ultrawide' && (${theme} == 'four' || ${theme} == 'five') ]]; then
     prompt -e "ultrawide 1080p does not support four and five theme"
     exit 1
-  elif [[ ${screen} == 'ultrawide2k' && ( ${theme} == 'four' || ${theme} == 'five' ) ]]; then
+  elif [[ ${screen} == 'ultrawide2k' && (${theme} == 'four' || ${theme} == 'five') ]]; then
     prompt -e "ultrawide 1440p does not support four and five theme"
     exit 1
   fi
@@ -83,7 +86,7 @@ install() {
     # Create themes directory if it didn't exist
     prompt -s "\n Checking for the existence of themes directory..."
 
-    [[ -d "${THEME_DIR}/${theme}" ]] && rm -rf "${THEME_DIR}/${theme}"
+    [[ -d "${THEME_DIR}/${theme}" ]] && rm -rf "${THEME_DIR}"/"${theme}"
     mkdir -p "${THEME_DIR}/${theme}"
 
     # Copy theme
@@ -130,7 +133,7 @@ install() {
           sed -i "s|.*GRUB_FONT=.*|GRUB_FONT=/boot/grub2/fonts/unicode.pf2|" /etc/default/grub
         else
           #Append GRUB_FONT
-          echo "GRUB_FONT=/boot/grub2/fonts/unicode.pf2" >> /etc/default/grub
+          echo "GRUB_FONT=/boot/grub2/fonts/unicode.pf2" >>/etc/default/grub
         fi
       elif [[ -f "/boot/efi/EFI/fedora/fonts/unicode.pf2" ]]; then
         if grep "GRUB_FONT=" /etc/default/grub 2>&1 >/dev/null; then
@@ -138,7 +141,7 @@ install() {
           sed -i "s|.*GRUB_FONT=.*|GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2|" /etc/default/grub
         else
           #Append GRUB_FONT
-          echo "GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2" >> /etc/default/grub
+          echo "GRUB_FONT=/boot/efi/EFI/fedora/fonts/unicode.pf2" >>/etc/default/grub
         fi
       fi
     fi
@@ -148,7 +151,7 @@ install() {
       sed -i "s|.*GRUB_THEME=.*|GRUB_THEME=\"${THEME_DIR}/${theme}/theme.txt\"|" /etc/default/grub
     else
       #Append GRUB_THEME
-      echo "GRUB_THEME=\"${THEME_DIR}/${theme}/theme.txt\"" >> /etc/default/grub
+      echo "GRUB_THEME=\"${THEME_DIR}/${theme}/theme.txt\"" >>/etc/default/grub
     fi
 
     # Make sure the right resolution for grub is set
@@ -169,7 +172,7 @@ install() {
       sed -i "s|.*GRUB_GFXMODE=.*|${gfxmode}|" /etc/default/grub
     else
       #Append GRUB_GFXMODE
-      echo "${gfxmode}" >> /etc/default/grub
+      echo "${gfxmode}" >>/etc/default/grub
     fi
 
     if grep "GRUB_TERMINAL=console" /etc/default/grub 2>&1 >/dev/null || grep "GRUB_TERMINAL=\"console\"" /etc/default/grub 2>&1 >/dev/null; then
@@ -197,26 +200,26 @@ install() {
     prompt -w "\n * At the next restart of your computer you will see your new Grub theme: '$theme' "
   else
     #Check if password is cached (if cache timestamp not expired yet)
-    sudo -n true 2> /dev/null && echo
+    sudo -n true 2>/dev/null && echo
 
     if [[ $? == 0 ]]; then
       #No need to ask for password
       sudo "$0" -t ${theme} -i ${icon} -s ${screen}
     else
       #Ask for password
-      if [[ -n ${tui_root_login} ]] ; then
+      if [[ -n ${tui_root_login} ]]; then
         if [[ -n "${theme}" && -n "${screen}" ]]; then
-          sudo -S $0 -t ${theme} -i ${icon} -s ${screen} <<< ${tui_root_login}
+          sudo -S $0 -t ${theme} -i ${icon} -s ${screen} <<<${tui_root_login}
         fi
       else
         prompt -e "\n [ Error! ] -> Run me as root! "
         read -p " [ Trusted ] Specify the root password : " -t ${MAX_DELAY} -s
 
-        sudo -S echo <<< $REPLY 2> /dev/null && echo
+        sudo -S echo <<<$REPLY 2>/dev/null && echo
 
         if [[ $? == 0 ]]; then
           #Correct password, use with sudo's stdin
-          sudo -S "$0" -t ${theme} -i ${icon} -s ${screen} <<< ${REPLY}
+          sudo -S "$0" -t ${theme} -i ${icon} -s ${screen} <<<${REPLY}
         else
           #block for 3 seconds before allowing another attempt
           sleep 3
@@ -225,14 +228,14 @@ install() {
         fi
       fi
     fi
- fi
+  fi
 }
 
 run_dialog() {
   if [[ -x /usr/bin/dialog ]]; then
-    if [[ "$UID" -ne "$ROOT_UID"  ]]; then
+    if [[ "$UID" -ne "$ROOT_UID" ]]; then
       #Check if password is cached (if cache timestamp not expired yet)
-      sudo -n true 2> /dev/null && echo
+      sudo -n true 2>/dev/null && echo
 
       if [[ $? == 0 ]]; then
         #No need to ask for password
@@ -240,16 +243,16 @@ run_dialog() {
       else
         #Ask for password
         tui_root_login=$(dialog --backtitle ${Project_Name} \
-        --title  "ROOT LOGIN" \
-        --insecure \
-        --passwordbox  "require root permission" 8 50 \
-        --output-fd 1 )
+          --title "ROOT LOGIN" \
+          --insecure \
+          --passwordbox "require root permission" 8 50 \
+          --output-fd 1)
 
-        sudo -S echo <<< $tui_root_login 2> /dev/null && echo
+        sudo -S echo <<<$tui_root_login 2>/dev/null && echo
 
         if [[ $? == 0 ]]; then
           #Correct password, use with sudo's stdin
-          sudo -S "$0" <<< $tui_root_login
+          sudo -S "$0" <<<$tui_root_login
         else
           #block for 3 seconds before allowing another attempt
           sleep 3
@@ -261,48 +264,48 @@ run_dialog() {
     fi
 
     tui=$(dialog --backtitle ${Project_Name} \
-    --radiolist "Choose your Grub theme : " 15 40 5 \
-      1 "two Theme" off  \
+      --radiolist "Choose your Grub theme : " 15 40 5 \
+      1 "two Theme" off \
       2 "one Theme" on \
-      3 "three Theme" off  \
-      4 "four Theme" off  \
-      5 "five Theme" off --output-fd 1 )
-      case "$tui" in
-        1) theme="two"      ;;
-        2) theme="one"       ;;
-        3) theme="three"    ;;
-        4) theme="four"      ;;
-        5) theme="five"   ;;
-        *) operation_canceled ;;
-     esac
+      3 "three Theme" off \
+      4 "four Theme" off \
+      5 "five Theme" off --output-fd 1)
+    case "$tui" in
+    1) theme="two" ;;
+    2) theme="one" ;;
+    3) theme="three" ;;
+    4) theme="four" ;;
+    5) theme="five" ;;
+    *) operation_canceled ;;
+    esac
 
     tui=$(dialog --backtitle ${Project_Name} \
-    --radiolist "Choose icon style : " 15 40 5 \
+      --radiolist "Choose icon style : " 15 40 5 \
       1 "white" off \
       2 "color" on \
-      3 "five" off --output-fd 1 )
-      case "$tui" in
-        1) icon="white"       ;;
-        2) icon="color"       ;;
-        3) icon="five"    ;;
-        *) operation_canceled ;;
-     esac
+      3 "five" off --output-fd 1)
+    case "$tui" in
+    1) icon="white" ;;
+    2) icon="color" ;;
+    3) icon="five" ;;
+    *) operation_canceled ;;
+    esac
 
     tui=$(dialog --backtitle ${Project_Name} \
-    --radiolist "Choose your Display Resolution : " 15 40 5 \
-      1 "1080p (1920x1080)" on  \
-      2 "1080p ultrawide (2560x1080)" off  \
+      --radiolist "Choose your Display Resolution : " 15 40 5 \
+      1 "1080p (1920x1080)" on \
+      2 "1080p ultrawide (2560x1080)" off \
       3 "2k (2560x1440)" off \
       4 "4k (3840x2160)" off \
-      5 "1440p ultrawide (3440x1440)" off --output-fd 1 )
-      case "$tui" in
-        1) screen="1080p"       ;;
-        2) screen="ultrawide"   ;;
-        3) screen="2k"          ;;
-        4) screen="4k"          ;;
-        5) screen="ultrawide2k" ;;
-        *) operation_canceled   ;;
-     esac
+      5 "1440p ultrawide (3440x1440)" off --output-fd 1)
+    case "$tui" in
+    1) screen="1080p" ;;
+    2) screen="ultrawide" ;;
+    3) screen="2k" ;;
+    4) screen="4k" ;;
+    5) screen="ultrawide2k" ;;
+    *) operation_canceled ;;
+    esac
   fi
 }
 
@@ -334,7 +337,7 @@ updating_grub() {
 }
 
 install_dialog() {
-  if [ ! "$(which dialog 2> /dev/null)" ]; then
+  if [ ! "$(which dialog 2>/dev/null)" ]; then
     prompt -w "\n 'dialog' need to be installed for this shell"
     if has_command zypper; then
       sudo zypper in dialog
@@ -383,7 +386,7 @@ remove() {
 
   else
     #Check if password is cached (if cache timestamp not expired yet)
-    sudo -n true 2> /dev/null && echo
+    sudo -n true 2>/dev/null && echo
 
     if [[ $? == 0 ]]; then
       #No need to ask for password
@@ -393,11 +396,11 @@ remove() {
       prompt -e "\n [ Error! ] -> Run me as root! "
       read -p " [ Trusted ] Specify the root password : " -t ${MAX_DELAY} -s
 
-      sudo -S echo <<< $REPLY 2> /dev/null && echo
+      sudo -S echo <<<$REPLY 2>/dev/null && echo
 
       if [[ $? == 0 ]]; then
         #Correct password, use with sudo's stdin
-        sudo -S "$0" "${PROG_ARGS[@]}" <<< $REPLY
+        sudo -S "$0" "${PROG_ARGS[@]}" <<<$REPLY
       else
         #block for 3 seconds before allowing another attempt
         sleep 3
@@ -410,10 +413,10 @@ remove() {
 }
 
 dialog_installer() {
-  if [[ ! -x /usr/bin/dialog ]];  then
-    if [[ $UID -ne $ROOT_UID ]];  then
+  if [[ ! -x /usr/bin/dialog ]]; then
+    if [[ $UID -ne $ROOT_UID ]]; then
       #Check if password is cached (if cache timestamp not expired yet)
-      sudo -n true 2> /dev/null && echo
+      sudo -n true 2>/dev/null && echo
 
       if [[ $? == 0 ]]; then
         #No need to ask for password
@@ -423,11 +426,11 @@ dialog_installer() {
         prompt -e "\n [ Error! ] -> Run me as root! "
         read -p " [ Trusted ] Specify the root password : " -t ${MAX_DELAY} -s
 
-        sudo -S echo <<< $REPLY 2> /dev/null && echo
+        sudo -S echo <<<$REPLY 2>/dev/null && echo
 
         if [[ $? == 0 ]]; then
           #Correct password, use with sudo's stdin
-          sudo $0 <<< $REPLY
+          sudo $0 <<<$REPLY
         else
           #block for 3 seconds before allowing another attempt
           sleep 3
@@ -446,120 +449,120 @@ while [[ $# -gt 0 ]]; do
   PROG_ARGS+=("${1}")
   dialog='false'
   case "${1}" in
-    -b|--boot)
-      THEME_DIR="/boot/grub/themes"
-      shift 1
-      ;;
-    -r|--remove)
-      remove='true'
-      shift 1
-      ;;
-    -t|--theme)
-      shift
-      for theme in "${@}"; do
-        case "${theme}" in
-          one)
-            themes+=("${THEME_VARIANTS[0]}")
-            shift
-            ;;
-          two)
-            themes+=("${THEME_VARIANTS[1]}")
-            shift
-            ;;
-          three)
-            themes+=("${THEME_VARIANTS[2]}")
-            shift
-            ;;
-          four)
-            themes+=("${THEME_VARIANTS[3]}")
-            shift
-            ;;
-          five)
-            themes+=("${THEME_VARIANTS[4]}")
-            shift
-            ;;
-          -*|--*)
-            break
-            ;;
-          *)
-            prompt -e "ERROR: Unrecognized theme variant '$1'."
-            prompt -i "Try '$0 --help' for more information."
-            exit 1
-            ;;
-        esac
-      done
-      ;;
-    -i|--icon)
-      shift
-      for icon in "${@}"; do
-        case "${icon}" in
-          color)
-            icons+=("${ICON_VARIANTS[0]}")
-            shift
-            ;;
-          white)
-            icons+=("${ICON_VARIANTS[1]}")
-            shift
-            ;;
-          five)
-            icons+=("${ICON_VARIANTS[2]}")
-            shift
-            ;;
-          -*|--*)
-            break
-            ;;
-          *)
-            prompt -e "ERROR: Unrecognized icon variant '$1'."
-            prompt -i "Try '$0 --help' for more information."
-            exit 1
-            ;;
-        esac
-      done
-      ;;
-    -s|--screen)
-      shift
-      for screen in "${@}"; do
-        case "${screen}" in
-          1080p)
-            screens+=("${SCREEN_VARIANTS[0]}")
-            shift
-            ;;
-          2k)
-            screens+=("${SCREEN_VARIANTS[1]}")
-            shift
-            ;;
-          4k)
-            screens+=("${SCREEN_VARIANTS[2]}")
-            shift
-            ;;
-          ultrawide)
-            screens+=("${SCREEN_VARIANTS[3]}")
-            shift
-            ;;
-          ultrawide2k)
-            screens+=("${SCREEN_VARIANTS[4]}")
-            shift
-            ;;
-          -*|--*)
-            break
-            ;;
-          *)
-            prompt -e "ERROR: Unrecognized icon variant '$1'."
-            prompt -i "Try '$0 --help' for more information."
-            exit 1
-            ;;
-        esac
-      done
-      ;;
-    -h|--help)
-      usage
-      exit 0
-      ;;
-    *)
-      prompt -e "ERROR: Unrecognized installation option '$1'."
-      prompt -i "Try '$0 --help' for more information."
-      exit 1
-      ;;
+  -b | --boot)
+    THEME_DIR="/boot/grub/themes"
+    shift 1
+    ;;
+  -r | --remove)
+    remove='true'
+    shift 1
+    ;;
+  -t | --theme)
+    shift
+    for theme in "${@}"; do
+      case "${theme}" in
+      one)
+        themes+=("${THEME_VARIANTS[0]}")
+        shift
+        ;;
+      two)
+        themes+=("${THEME_VARIANTS[1]}")
+        shift
+        ;;
+      three)
+        themes+=("${THEME_VARIANTS[2]}")
+        shift
+        ;;
+      four)
+        themes+=("${THEME_VARIANTS[3]}")
+        shift
+        ;;
+      five)
+        themes+=("${THEME_VARIANTS[4]}")
+        shift
+        ;;
+      -* | --*)
+        break
+        ;;
+      *)
+        prompt -e "ERROR: Unrecognized theme variant '$1'."
+        prompt -i "Try '$0 --help' for more information."
+        exit 1
+        ;;
+      esac
+    done
+    ;;
+  -i | --icon)
+    shift
+    for icon in "${@}"; do
+      case "${icon}" in
+      color)
+        icons+=("${ICON_VARIANTS[0]}")
+        shift
+        ;;
+      white)
+        icons+=("${ICON_VARIANTS[1]}")
+        shift
+        ;;
+      five)
+        icons+=("${ICON_VARIANTS[2]}")
+        shift
+        ;;
+      -* | --*)
+        break
+        ;;
+      *)
+        prompt -e "ERROR: Unrecognized icon variant '$1'."
+        prompt -i "Try '$0 --help' for more information."
+        exit 1
+        ;;
+      esac
+    done
+    ;;
+  -s | --screen)
+    shift
+    for screen in "${@}"; do
+      case "${screen}" in
+      1080p)
+        screens+=("${SCREEN_VARIANTS[0]}")
+        shift
+        ;;
+      2k)
+        screens+=("${SCREEN_VARIANTS[1]}")
+        shift
+        ;;
+      4k)
+        screens+=("${SCREEN_VARIANTS[2]}")
+        shift
+        ;;
+      ultrawide)
+        screens+=("${SCREEN_VARIANTS[3]}")
+        shift
+        ;;
+      ultrawide2k)
+        screens+=("${SCREEN_VARIANTS[4]}")
+        shift
+        ;;
+      -* | --*)
+        break
+        ;;
+      *)
+        prompt -e "ERROR: Unrecognized icon variant '$1'."
+        prompt -i "Try '$0 --help' for more information."
+        exit 1
+        ;;
+      esac
+    done
+    ;;
+  -h | --help)
+    usage
+    exit 0
+    ;;
+  *)
+    prompt -e "ERROR: Unrecognized installation option '$1'."
+    prompt -i "Try '$0 --help' for more information."
+    exit 1
+    ;;
   esac
 done
 
@@ -578,7 +581,7 @@ if [[ "${dialog:-}" == 'false' ]]; then
       remove "${theme}"
     done
   fi
-  else
+else
   dialog_installer
 fi
 

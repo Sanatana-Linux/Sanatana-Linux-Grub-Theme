@@ -14,7 +14,7 @@ DEST_DIR="/usr/share/grub/themes"
 REO_DIR="$(cd $(dirname $0) && pwd)"
 }
 
-name=Graphite
+name=Bhairava
 THEME_VARIANTS=('' 'nord')
 SCREEN_VARIANTS=('1080p' '2k' '4k')
 

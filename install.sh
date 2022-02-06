@@ -33,15 +33,15 @@ sudo echo
 
 # Select language, optional
 declare -A INSTALLER_LANGS=(
-    [Chinese]=zh_CN
     [English]=EN
-    [French]=FR
     [German]=DE
-    [Italian]=IT
-    [Norwegian]=NO
-    [Portuguese]=PT
     [Russian]=RU
     [Spanish]=ES
+    [French]=FR
+    [Italian]=IT
+    [Chinese]=zh_CN
+    [Norwegian]=NO
+    [Portuguese]=PT
     [Turkish]=TR
     [Ukrainian]=UA
 )

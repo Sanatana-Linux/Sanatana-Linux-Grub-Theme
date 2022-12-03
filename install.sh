@@ -205,8 +205,10 @@ install() {
 
 updating_grub() {
   if has_command update-grub; then
+    grub-install
     update-grub
   elif has_command grub-mkconfig; then
+    grub-install 
     grub-mkconfig -o /boot/grub/grub.cfg
   elif has_command zypper; then
     grub2-mkconfig -o /boot/grub2/grub.cfg

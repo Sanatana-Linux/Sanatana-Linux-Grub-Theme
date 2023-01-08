@@ -9,7 +9,7 @@ readonly MAX_DELAY=20 # max delay for user to enter root password
 DEST_DIR="/usr/share/grub/themes"
 REO_DIR="$(cd $(dirname $0) && pwd)"
 
-name=Bhairava
+name=bhairava
 
 #COLORS
 CDEF=" \033[0m"      # default color
@@ -68,10 +68,9 @@ install() {
 
   # Copy theme
   prompt -s "\n Installing ${name} theme..."
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
   # Don't preserve ownership because the owner will be root, and that causes the script to crash if it is ran from terminal by sudo
-  cp -rvf --no-preserve=ownership $SCRIPT_DIR/* "${THEME_DIR}"
+  cp -rvf --no-preserve=ownership $REO_DIR/* "${THEME_DIR}"
 
 
   # Set theme

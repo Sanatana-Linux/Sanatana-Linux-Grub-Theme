@@ -68,11 +68,11 @@ install() {
 
   # Copy theme
   prompt -s "\n Installing ${name} theme..."
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
   # Don't preserve ownership because the owner will be root, and that causes the script to crash if it is ran from terminal by sudo
-  cp -rvf --no-preserve=ownership ./* "${THEME_DIR}"
+  cp -rvf --no-preserve=ownership $SCRIPT_DIR/* "${THEME_DIR}"
 
-  [[ "${justcopy:-}" == 'true' ]] && exit 0
 
   # Set theme
   prompt -s "\n Setting ${name} as default..."

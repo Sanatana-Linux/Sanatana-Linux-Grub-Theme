@@ -16,7 +16,7 @@
         let
           cfg = config.boot.loader.grub.bhairava-grub-theme;
 
-          bhairava-grub-grub-theme = pkgs.stdenv.mkDerivation {
+          bhairava-grub-theme = pkgs.stdenv.mkDerivation {
             name = "bhairava-grub-grub-theme";
             src = ./.;
             installPhase = ''

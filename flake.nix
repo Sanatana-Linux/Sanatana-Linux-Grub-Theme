@@ -21,12 +21,11 @@
             src = ./.;
             installPhase = ''
               mkdir -p $out/grub/theme/icons
-              
-              cp backgrounds/bg.png $out/grub/theme/bg.png
-              cp -r assets/assets/1080p/* $out/grub/theme/
-              cp -r assets/logos/1080p/* $out/grub/theme/icons/ 
-              cp -r common/* $out/grub/theme/
-              cp -r config/theme-1080p.txt $out/grub/theme/theme.txt
+              cp -rf backgrounds/bg.png $out/grub/theme/bg.png
+              cp -rf assets/assets/1080p/* $out/grub/theme/
+              cp -rf assets/logos/1080p/* $out/grub/theme/icons/ 
+              cp -rf common/* $out/grub/theme/
+              cp -rf config/theme-1080p.txt $out/grub/theme/theme.txt
             '';
           };
         in

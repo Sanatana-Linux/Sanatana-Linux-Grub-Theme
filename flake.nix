@@ -14,7 +14,7 @@
     {
       nixosModule = { config, ... }:
         let
-          cfg = config.boot.loader.grub.bhairava-theme;
+          cfg = config.boot.loader.grub.bhairava-grub-theme;
 
           bhairava-grub-grub-theme = pkgs.stdenv.mkDerivation {
             name = "bhairava-grub-grub-theme";

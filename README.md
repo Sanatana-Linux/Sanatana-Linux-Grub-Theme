@@ -1,2 +1,1 @@
-# Bhairava Grub Theme
-
+# Sanatana Linux Grub Theme 

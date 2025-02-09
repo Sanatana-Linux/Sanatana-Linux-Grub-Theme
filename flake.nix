@@ -43,6 +43,13 @@
             environment.systemPackages = [bhairava-grub-theme];
             boot.loader.grub = {
               theme = "${bhairava-grub-theme}/grub/theme";
+              gfxmodeEfi = "2560x1440,auto";
+              gfxmodeBios = "2560x1440,auto";
+              extraConfig = ''
+                insmod gfxterm
+                insmod png
+                set icondir=($root)/theme/icons
+              '';
             };
           }
         ]);

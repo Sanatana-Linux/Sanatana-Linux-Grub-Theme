@@ -1,0 +1,2 @@
+[console_scripts]
+grub2-theme-preview = grub2_theme_preview.__main__:main
